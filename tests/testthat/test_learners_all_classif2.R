@@ -1,7 +1,10 @@
 context("learners_all_classif2")
 
+detachAllPackages()
+R.utils::gcDLLs()
 
 test_that("learners work: classif2 ", {
+  detachAllPackages()
   R.utils::gcDLLs()
   # settings to make learners faster and deal with small data size
   hyperpars = list(

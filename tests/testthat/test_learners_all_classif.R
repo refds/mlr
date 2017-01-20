@@ -1,5 +1,8 @@
 context("learners_all_classif1")
 
+detachAllPackages()
+R.utils::gcDLLs()
+
 test_that("learners work: classif1 ", {
 
   # settings to make learners faster and deal with small data size
@@ -109,3 +112,6 @@ test_that("WeightedClassWrapper on all multiclass learners",  {
   detachAllPackages()
   R.utils::gcDLLs()
 })
+
+detachAllPackages()
+R.utils::gcDLLs()
