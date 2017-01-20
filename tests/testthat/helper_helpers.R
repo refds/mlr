@@ -321,7 +321,10 @@ testSimpleParsetsUpdate = function(t.name, df, target,update.inds, train.inds,
 
 detachAllPackages <- function() {
 
-  basic.packages <- c("package:stats","package:graphics","package:grDevices","package:utils","package:datasets","package:methods","package:base", "package:mlr")
+  basic.packages <- c("package:stats","package:graphics","package:grDevices",
+                      "package:utils","package:datasets","package:methods",
+                      "package:base", "package:mlr", "package:ParamHelpers",
+                      "package:BBmisc", "package:checkmate", "package:testthat")
 
   package.list <- search()[ifelse(unlist(gregexpr("package:",search()))==1,TRUE,FALSE)]
 
