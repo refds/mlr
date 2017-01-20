@@ -145,6 +145,7 @@ Suggests:
     RSNNS,
     rugarch,
     RWeka,
+    R.utils,
     sda,
     smoof,
     sparsediscrim,
