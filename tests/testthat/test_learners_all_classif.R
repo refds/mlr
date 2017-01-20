@@ -52,11 +52,11 @@ test_that("learners work: classif1 ", {
   # binary classif with ordered factors
   lrns = mylist("classif", properties = "ordered", create = TRUE)
   lapply(lrns, testThatLearnerHandlesOrderedFactors, task = task, hyperpars = hyperpars)
-
+  R.utils::gcDLLs()
 })
 
 test_that("learners work: classif2 ", {
-
+  R.utils::gcDLLs()
   # settings to make learners faster and deal with small data size
   hyperpars = list(
     classif.boosting = list(mfinal = 2L),
@@ -99,10 +99,12 @@ test_that("learners work: classif2 ", {
   # classif with variable importance
   lrns = mylist("classif", properties = "featimp", create = TRUE)
   lapply(lrns, testThatLearnerCanCalculateImportance, task = task, hyperpars = hyperpars)
+  R.utils::gcDLLs()
 })
 
 
 test_that("weightedClassWrapper on all binary learners",  {
+  R.utils::gcDLLs()
   pos = getTaskDescription(binaryclass.task)$positive
   f = function(lrn, w) {
     lrn1 = makeLearner(lrn)
@@ -120,10 +122,12 @@ test_that("weightedClassWrapper on all binary learners",  {
     expect_true(all(cm1[, pos] <= cm2[, pos]))
     expect_true(all(cm2[, pos] <= cm3[, pos]))
   })
+  R.utils::gcDLLs()
 })
 
 
 test_that("WeightedClassWrapper on all multiclass learners",  {
+  R.utils::gcDLLs()
   levs = getTaskClassLevels(multiclass.task)
   f = function(lrn, w) {
     lrn1 = makeLearner(lrn)
@@ -148,4 +152,5 @@ test_that("WeightedClassWrapper on all multiclass learners",  {
     expect_true(all(cm3[, levs[3]] >= cm1[, levs[3]]))
     expect_true(all(cm3[, levs[3]] >= cm2[, levs[3]]))
   })
+  R.utils::gcDLLs()
 })
