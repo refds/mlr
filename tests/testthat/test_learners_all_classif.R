@@ -52,6 +52,7 @@ test_that("learners work: classif1 ", {
   # binary classif with ordered factors
   lrns = mylist("classif", properties = "ordered", create = TRUE)
   lapply(lrns, testThatLearnerHandlesOrderedFactors, task = task, hyperpars = hyperpars)
+  detachAllPackages()
   R.utils::gcDLLs()
 })
 
@@ -105,5 +106,6 @@ test_that("WeightedClassWrapper on all multiclass learners",  {
     expect_true(all(cm3[, levs[3]] >= cm1[, levs[3]]))
     expect_true(all(cm3[, levs[3]] >= cm2[, levs[3]]))
   })
+  detachAllPackages()
   R.utils::gcDLLs()
 })

@@ -31,6 +31,8 @@ test_that("learners work: classif2 ", {
   lapply(lrns, testBasicLearnerProperties, task = binaryclass.task,
          hyperpars = hyperpars, pred.type = "prob")
 
+  detachAllPackages()
+  R.utils::gcDLLs()
   # binary classif with weights
   lrns = mylist("classif", properties = "weights", create = TRUE)
   lapply(lrns, testThatLearnerRespectsWeights, hyperpars = hyperpars,
@@ -38,10 +40,13 @@ test_that("learners work: classif2 ", {
          weights = rep(c(10000L, 1L), c(10L, length(binaryclass.train.inds) - 10L)),
          pred.type = "prob", get.pred.fun = getPredictionProbabilities)
 
+  detachAllPackages()
+  R.utils::gcDLLs()
   # classif with missing
   lrns = mylist("classif", properties = "missings", create = TRUE)
   lapply(lrns, testThatLearnerHandlesMissings, task = task, hyperpars = hyperpars)
 
+  detachAllPackages()
   # classif with variable importance
   lrns = mylist("classif", properties = "featimp", create = TRUE)
   lapply(lrns, testThatLearnerCanCalculateImportance, task = task, hyperpars = hyperpars)
